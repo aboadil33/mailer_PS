@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification</title>
+</head>
+
+<body style="margin:0; padding:0; background:#f4f4f4; font-family:Arial, sans-serif;">
+
+    <!-- NAV BAR -->
+    <table width="100%" style="background:#111; padding:10px 0;">
+        <tr>
+            <td align="center" style="color:#fff; font-size:14px;">
+                <b>Service Clientèle</b> | Secure Notification System
+            </td>
+        </tr>
+    </table>
+
+    <!-- MAIN CONTAINER -->
+    <table width="100%" cellpadding="0" cellspacing="0" style="padding:20px 0;">
+        <tr>
+            <td align="center">
+
+                <table width="600" style="background:#ffffff; padding:30px; border-radius:10px;">
+
+                    <!-- TITLE -->
+                    <tr>
+                        <td align="center">
+                            <h2 style="margin:0; color:#333;">Hello {{##Email##}} 👋</h2>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td style="height:20px;"></td>
+                    </tr>
+
+                    <!-- MESSAGE -->
+                    <tr>
+                        <td style="font-size:15px; color:#555;">
+                            This is an automated system email sent for your account security.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td style="height:20px;"></td>
+                    </tr>
+
+                    <!-- BUTTON -->
+                    <tr>
+                        <td align="center">
+                            <a href="{{##LINK##}}" style="background:#4CAF50; color:#fff; padding:12px 25px;
+                        text-decoration:none; border-radius:5px; display:inline-block;">
+                                Open Secure Link
+                            </a>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td style="height:30px;"></td>
+                    </tr>
+
+                    <!-- CODE -->
+                    <tr>
+                        <td style="font-size:16px; color:#333;">
+                            Your verification code:
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td align="center">
+                            <h1 style="letter-spacing:3px; margin:10px 0;">
+                                {{##Rand##}}
+                            </h1>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td style="font-size:13px; color:#777;">
+                            Session ID: <b>{{##SESSION##}}</b>
+                        </td>
+                    </tr>
+
+                </table>
+
+                <!-- FOOTER -->
+                <table width="600" style="margin-top:15px; color:#888; font-size:12px;">
+
+                    <tr>
+                        <td align="center" style="padding:10px;">
+                            <a href="{{UNSUBSCRIBE_LINK}}" style="color:#888; text-decoration:underline;">
+                                Unsubscribe
+                            </a>
+                            &nbsp;|&nbsp;
+                            <a href="{{SUPPORT_LINK}}" style="color:#888; text-decoration:underline;">
+                                Support
+                            </a>
+                            &nbsp;|&nbsp;
+                            <a href="{{PRIVACY_LINK}}" style="color:#888; text-decoration:underline;">
+                                Privacy Policy
+                            </a>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td align="center" style="padding-bottom:10px;">
+                            You are receiving this email because you are registered in our system.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td align="center" style="font-size:11px; color:#aaa;">
+                            © 2026 Service Clientèle — All rights reserved
+                        </td>
+                    </tr>
+
+                </table>
+
+            </td>
+        </tr>
+    </table>
+
+</body>
+
+</html>
