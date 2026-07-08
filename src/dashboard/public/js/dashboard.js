@@ -184,6 +184,11 @@ async function loadMails() {
             )
                 color = "danger";
 
+            if(
+                mail.status === "QUEUED"
+            )
+                color = "queue"
+
 
 
             tbody.innerHTML += `
