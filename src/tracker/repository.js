@@ -134,18 +134,55 @@ module.exports = {
     },
 
 
-    getAll(limit = 100) {
+    // getAll(limit = 100) {
 
-        return db.prepare(`
+    //     return db.prepare(`
+    //         SELECT *
+
+    //         FROM mails
+
+    //         ORDER BY id DESC
+
+    //         LIMIT ?
+
+    //     `).all(limit);
+
+    // }
+    getAll(limit = 100, status = null) {
+
+        if (status && status !== "ALL") {
+
+            return db.prepare(`
+
             SELECT *
 
             FROM mails
+
+            WHERE status = ?
 
             ORDER BY id DESC
 
             LIMIT ?
 
-        `).all(limit);
+        `).all(
+                status,
+                limit
+            );
+
+        }
+
+
+        return db.prepare(`
+
+        SELECT *
+
+        FROM mails
+
+        ORDER BY id DESC
+
+        LIMIT ?
+
+    `).all(limit);
 
     }
 

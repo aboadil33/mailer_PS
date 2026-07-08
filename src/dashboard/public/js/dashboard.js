@@ -150,13 +150,19 @@ async function loadChart() {
 
 
 }
-
+let currentStatus = "ALL";
 async function loadMails() {
 
     try {
 
 
-        const res = await fetch("/api/mails");
+        // const res = await fetch("/api/mails");
+        const url =
+            currentStatus === "ALL"
+                ? "/api/mails"
+                : `/api/mails?status=${currentStatus}`;
+
+        const res = await fetch(url);
 
         const mails = await res.json();
 
@@ -184,7 +190,7 @@ async function loadMails() {
             )
                 color = "danger";
 
-            if(
+            if (
                 mail.status === "QUEUED"
             )
                 color = "queue"
@@ -227,6 +233,25 @@ async function loadMails() {
         console.log(e);
 
     }
+
+}
+
+function filterMails(status) {
+
+    currentStatus = status;
+
+    loadMails();
+
+}
+
+function exportMails() {
+
+    const status = currentStatus;
+
+    window.location.href =
+        status === "ALL"
+        ? "/api/mails/export"
+        : `/api/mails/export?status=${status}`;
 
 }
 

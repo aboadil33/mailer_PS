@@ -139,8 +139,85 @@
 
 
 
-
         <section class="panel">
+
+            <h2>Recent Emails</h2>
+
+
+            <div class="mail-actions">
+
+                <label>
+                    Status:
+                </label>
+
+                <select id="statusFilter" onchange="filterMails(this.value)">
+                    <option value="ALL">ALL</option>
+                    <option value="DELIVERED">DELIVERED</option>
+                    <option value="BOUNCE">BOUNCE</option>
+                    <option value="DEFERRED">DEFERRED</option>
+                    <option value="FAILED">FAILED</option>
+                </select>
+
+
+                <button onclick="exportMails()">
+                    📥 Export TXT
+                </button>
+
+            </div>
+
+
+            <div class="table-box">
+
+
+                <table>
+
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Queue ID</th>
+                            <th>Email</th>
+                            <th>Status</th>
+                            <th>Time</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+
+                        <tr>
+
+                            <td>6773F406E6</td>
+
+                            <td>demosbou@gmail.com</td>
+
+                            <td>
+                                <span class="badge success">
+                                    DELIVERED
+                                </span>
+                            </td>
+
+                            <td>
+                                02:52
+                            </td>
+
+                        </tr>
+
+
+                    </tbody>
+
+
+                </table>
+
+
+            </div>
+
+        </section>
+        <!-- <section class="panel">
 
 
             <h2>Recent Emails</h2>
@@ -197,7 +274,7 @@
             </div>
 
 
-        </section>
+        </section> -->
 
 
 

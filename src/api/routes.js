@@ -1,10 +1,57 @@
 const express = require("express");
 const repo = require("../tracker/repository");
 
+const fs = require("fs");
 const router = express.Router();
 
 
-router.get("/stats", (req,res)=>{
+
+router.get("/mails/export",(req,res)=>{
+
+    try {
+
+        const status =
+            req.query.status || null;
+
+
+        const mails = repo.getAll(
+            100000,
+            status
+        );
+
+
+        const content = mails
+            .map(mail => mail.email)
+            .join("\n");
+
+
+        res.setHeader(
+            "Content-Disposition",
+            `attachment; filename=${status || "ALL"}_emails.txt`
+        );
+
+
+        res.setHeader(
+            "Content-Type",
+            "text/plain"
+        );
+
+
+        res.send(content);
+
+
+    } catch(err){
+
+        res.status(500).json({
+            error: err.message
+        });
+
+    }
+
+});
+
+
+router.get("/stats", (req, res) => {
 
     try {
 
@@ -12,7 +59,7 @@ router.get("/stats", (req,res)=>{
 
         res.json(stats);
 
-    } catch(err){
+    } catch (err) {
 
         res.status(500).json({
             error: err.message
@@ -23,17 +70,47 @@ router.get("/stats", (req,res)=>{
 });
 
 
-router.get("/mails", (req,res)=>{
+// router.get("/mails", (req,res)=>{
+
+//     try {
+
+//         const mails = repo.getAll(
+//             Number(req.query.limit) || 100
+//         );
+
+//         res.json(mails);
+
+//     } catch(err){
+
+//         res.status(500).json({
+//             error: err.message
+//         });
+
+//     }
+
+// });
+
+router.get("/mails", (req, res) => {
 
     try {
 
+        const limit =
+            Number(req.query.limit) || 100;
+
+        const status =
+            req.query.status || null;
+
+
         const mails = repo.getAll(
-            Number(req.query.limit) || 100
+            limit,
+            status
         );
+
 
         res.json(mails);
 
-    } catch(err){
+
+    } catch (err) {
 
         res.status(500).json({
             error: err.message
@@ -44,7 +121,7 @@ router.get("/mails", (req,res)=>{
 });
 
 
-router.get("/mail/:queueId",(req,res)=>{
+router.get("/mail/:queueId", (req, res) => {
 
     try {
 
@@ -53,10 +130,10 @@ router.get("/mail/:queueId",(req,res)=>{
         );
 
 
-        if(!mail){
+        if (!mail) {
 
             return res.status(404).json({
-                error:"Not found"
+                error: "Not found"
             });
 
         }
@@ -65,10 +142,10 @@ router.get("/mail/:queueId",(req,res)=>{
         res.json(mail);
 
 
-    }catch(err){
+    } catch (err) {
 
         res.status(500).json({
-            error:err.message
+            error: err.message
         });
 
     }
