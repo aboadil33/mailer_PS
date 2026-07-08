@@ -1,0 +1,18 @@
+2026-07-07T23:41:40.377Z arlette.daem@telenet.be ENOENT: no such file or directory, open '/root/sender_js/src/mail/tracker/queue.json'
+2026-07-07T23:41:40.393Z demosbou@gmail.com ENOENT: no such file or directory, open '/root/sender_js/src/mail/tracker/queue.json'
+2026-07-07T23:41:40.676Z bikola.bikola@outlook.com ENOENT: no such file or directory, open '/root/sender_js/src/mail/tracker/queue.json'
+2026-07-07T23:41:40.692Z soufiane6_hacker@hotmail.com ENOENT: no such file or directory, open '/root/sender_js/src/mail/tracker/queue.json'
+2026-07-07T23:43:24.180Z arlette.daem@telenet.be ENOENT: no such file or directory, open '/root/sender_js/src/mail/tracker/queue.json'
+2026-07-07T23:43:24.186Z demosbou@gmail.com ENOENT: no such file or directory, open '/root/sender_js/src/mail/tracker/queue.json'
+2026-07-07T23:43:24.491Z bikola.bikola@outlook.com ENOENT: no such file or directory, open '/root/sender_js/src/mail/tracker/queue.json'
+2026-07-07T23:43:24.493Z soufiane6_hacker@hotmail.com ENOENT: no such file or directory, open '/root/sender_js/src/mail/tracker/queue.json'
+2026-07-08T02:42:40.409Z arlette.daem@telenet.be db.prepare is not a function
+2026-07-08T02:42:40.420Z demosbou@gmail.com db.prepare is not a function
+2026-07-08T02:42:40.716Z skylurrese1976@gmx.de db.prepare is not a function
+2026-07-08T02:42:40.725Z bikola.bikola@outlook.com db.prepare is not a function
+2026-07-08T02:42:41.016Z soufiane6_hacker@hotmail.com db.prepare is not a function
+2026-07-08T02:44:34.928Z arlette.daem@telenet.be table events has no column named event
+2026-07-08T02:44:34.934Z demosbou@gmail.com table events has no column named event
+2026-07-08T02:44:35.236Z skylurrese1976@gmx.de table events has no column named event
+2026-07-08T02:44:35.243Z bikola.bikola@outlook.com table events has no column named event
+2026-07-08T02:44:35.540Z soufiane6_hacker@hotmail.com table events has no column named event

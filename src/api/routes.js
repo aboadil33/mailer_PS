@@ -1,0 +1,79 @@
+const express = require("express");
+const repo = require("../tracker/repository");
+
+const router = express.Router();
+
+
+router.get("/stats", (req,res)=>{
+
+    try {
+
+        const stats = repo.getStats();
+
+        res.json(stats);
+
+    } catch(err){
+
+        res.status(500).json({
+            error: err.message
+        });
+
+    }
+
+});
+
+
+router.get("/mails", (req,res)=>{
+
+    try {
+
+        const mails = repo.getAll(
+            Number(req.query.limit) || 100
+        );
+
+        res.json(mails);
+
+    } catch(err){
+
+        res.status(500).json({
+            error: err.message
+        });
+
+    }
+
+});
+
+
+router.get("/mail/:queueId",(req,res)=>{
+
+    try {
+
+        const mail = repo.getMail(
+            req.params.queueId
+        );
+
+
+        if(!mail){
+
+            return res.status(404).json({
+                error:"Not found"
+            });
+
+        }
+
+
+        res.json(mail);
+
+
+    }catch(err){
+
+        res.status(500).json({
+            error:err.message
+        });
+
+    }
+
+});
+
+
+module.exports = router;

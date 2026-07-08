@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Boga Mail Dashboard</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+
+    <div class="sidebar">
+
+        <div class="logo">
+            ✉ BOGA MAIL
+        </div>
+
+        <ul>
+
+            <li class="active">📊 Dashboard</li>
+            <li onclick="showPage('emails')">
+                📨 Emails
+            </li>
+
+            <li onclick="showPage('analytics')">
+                📈 Analytics
+            </li>
+            <li>⚙ Settings</li>
+
+        </ul>
+
+    </div>
+
+
+
+    <div class="main">
+
+
+        <header>
+
+            <h1>Dashboard</h1>
+
+            <div class="user">
+                Admin
+            </div>
+
+        </header>
+
+
+
+        <section class="cards">
+
+
+            <div class="card">
+
+                <h3>Total Emails</h3>
+
+                <div class="number">
+                    0
+                </div>
+
+                <span>
+                    All messages
+                </span>
+
+            </div>
+
+
+
+            <div class="card success">
+
+                <h3>Delivered</h3>
+
+                <div class="number">
+                    0
+                </div>
+
+                <span>
+                    Success delivery
+                </span>
+
+            </div>
+
+
+
+            <div class="card warning">
+
+                <h3>Deferred</h3>
+
+                <div class="number">
+                    0
+                </div>
+
+                <span>
+                    Waiting
+                </span>
+
+            </div>
+
+
+
+            <div class="card danger">
+
+                <h3>Failed</h3>
+
+                <div class="number">
+                    0
+                </div>
+
+                <span>
+                    Errors
+                </span>
+
+            </div>
+
+
+        </section>
+
+
+
+
+        <section class="panel">
+
+            <h2>Mail Activity</h2>
+
+            <div class="chart">
+                <canvas id="statusChart"></canvas>
+            </div>
+
+
+        </section>
+
+
+
+
+
+        <section class="panel">
+
+
+            <h2>Recent Emails</h2>
+
+
+            <div class="table-box">
+
+
+                <table>
+
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Queue ID</th>
+                            <th>Email</th>
+                            <th>Status</th>
+                            <th>Time</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+
+                        <tr>
+
+                            <td>6773F406E6</td>
+
+                            <td>demosbou@gmail.com</td>
+
+                            <td>
+                                <span class="badge success">
+                                    DELIVERED
+                                </span>
+                            </td>
+
+                            <td>
+                                02:52
+                            </td>
+
+                        </tr>
+
+
+                    </tbody>
+
+
+                </table>
+
+
+            </div>
+
+
+        </section>
+
+
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../js/dashboard.js"></script>
+</body>
+
+</html>
