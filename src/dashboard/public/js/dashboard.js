@@ -151,7 +151,7 @@ async function loadChart() {
 
 }
 
-async function loadProviders(){
+async function loadProviders() {
 
     try {
 
@@ -168,11 +168,11 @@ async function loadProviders(){
 
 
         data
-        .filter(p => Number(p.percent) > 0)
-        .forEach(p => {
+            .filter(p => Number(p.percent) > 0)
+            .forEach(p => {
 
 
-            box.innerHTML += `
+                box.innerHTML += `
 
             <div class="provider-row">
 
@@ -205,10 +205,10 @@ async function loadProviders(){
             `;
 
 
-        });
+            });
 
 
-    } catch(err){
+    } catch (err) {
 
         console.log(err);
 

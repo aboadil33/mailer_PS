@@ -148,6 +148,8 @@ module.exports = {
             Gmail: 0,
             Yahoo: 0,
             Telenet: 0,
+            Sfr: 0,
+            Orange: 0,
             Enterprise: 0,
             Other: 0
         };
@@ -184,6 +186,13 @@ module.exports = {
             else if (domain.includes("telenet")) {
                 providers.Telenet++;
             }
+            else if (domain.includes("sfr")) {
+                providers.Sfr++;
+            }
+            else if (domain.includes("orange")) {
+                providers.Orange++;
+            }
+
 
             else if (
                 ![
@@ -191,6 +200,8 @@ module.exports = {
                     "telenet.be",
                     "hotmail.com",
                     "outlook.com",
+                    "sfr.fr",
+                    "orange.fr",
                     "live.com",
                     "yahoo.com"
                 ].includes(domain)
@@ -272,6 +283,28 @@ module.exports = {
         LIMIT ?
 
     `).all(limit);
+
+    },
+
+    exportEmails(status = null) {
+
+        if (status && status !== "ALL") {
+
+            return db.prepare(`
+            SELECT email
+            FROM mails
+            WHERE status = ?
+            ORDER BY id DESC
+        `).all(status);
+
+        }
+
+
+        return db.prepare(`
+        SELECT email
+        FROM mails
+        ORDER BY id DESC
+    `).all();
 
     }
 

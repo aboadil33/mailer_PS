@@ -13,11 +13,11 @@ router.get("/mails/export",(req,res)=>{
         const status =
             req.query.status || null;
 
-
-        const mails = repo.getAll(
-            100000,
-            status
-        );
+        const mails = repo.exportEmails(status);
+        // const mails = repo.getAll(
+        //     100000,
+        //     status
+        // );
 
 
         const content = mails
@@ -105,6 +105,7 @@ router.get("/mails", (req, res) => {
             limit,
             status
         );
+        // const mails = repo.exportEmails(status);
 
 
         res.json(mails);
