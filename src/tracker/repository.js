@@ -133,6 +133,95 @@ module.exports = {
 
     },
 
+    getProviders() {
+
+        const rows = db.prepare(`
+
+        SELECT email
+        FROM mails
+
+    `).all();
+
+
+        const providers = {
+            Outlook: 0,
+            Gmail: 0,
+            Yahoo: 0,
+            Telenet: 0,
+            Enterprise: 0,
+            Other: 0
+        };
+
+
+        rows.forEach(row => {
+
+            const domain =
+                row.email
+                    .split("@")[1]
+                    ?.toLowerCase();
+
+
+            if (!domain)
+                return;
+
+
+            if (
+                domain.includes("hotmail") ||
+                domain.includes("outlook") ||
+                domain.includes("live") ||
+                domain.includes("msn")
+            ) {
+                providers.Outlook++;
+            }
+
+            else if (domain.includes("gmail")) {
+                providers.Gmail++;
+            }
+
+            else if (domain.includes("yahoo")) {
+                providers.Yahoo++;
+            }
+            else if (domain.includes("telenet")) {
+                providers.Telenet++;
+            }
+
+            else if (
+                ![
+                    "gmail.com",
+                    "telenet.be",
+                    "hotmail.com",
+                    "outlook.com",
+                    "live.com",
+                    "yahoo.com"
+                ].includes(domain)
+            ) {
+                providers.Enterprise++;
+            }
+
+            else {
+                providers.Other++;
+            }
+
+        });
+
+
+        const total = rows.length || 1;
+
+
+        return Object.keys(providers).map(key => ({
+
+            provider: key,
+
+            total: providers[key],
+
+            percent:
+                ((providers[key] / total) * 100)
+                    .toFixed(2)
+
+        }));
+
+    },
+
 
     // getAll(limit = 100) {
 

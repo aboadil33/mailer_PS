@@ -240,7 +240,52 @@ header h1{
 }
 
 
+.provider-row {
 
+    margin-bottom:18px;
+
+}
+
+
+.provider-head {
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-bottom:8px;
+
+    font-size:14px;
+
+}
+
+
+.progress {
+
+    width:100%;
+
+    height:10px;
+
+    background:#1e293b;
+
+    border-radius:10px;
+
+    overflow:hidden;
+
+}
+
+
+.progress-bar {
+
+    height:100%;
+
+    background:#4da3ff;
+
+    border-radius:10px;
+
+    transition:width .5s ease;
+
+}
 
 /* PANELS */
 

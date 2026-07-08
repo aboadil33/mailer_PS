@@ -150,6 +150,71 @@ async function loadChart() {
 
 
 }
+
+async function loadProviders(){
+
+    try {
+
+        const res = await fetch("/api/providers");
+
+        const data = await res.json();
+
+
+        const box =
+            document.getElementById("providers");
+
+
+        box.innerHTML = "";
+
+
+        data
+        .filter(p => Number(p.percent) > 0)
+        .forEach(p => {
+
+
+            box.innerHTML += `
+
+            <div class="provider-row">
+
+
+                <div class="provider-head">
+
+                    <span>
+                        ${p.provider}
+                    </span>
+
+                    <b>
+                        ${p.percent}%
+                    </b>
+
+                </div>
+
+
+                <div class="progress">
+
+                    <div 
+                    class="progress-bar"
+                    style="width:${p.percent}%">
+                    </div>
+
+                </div>
+
+
+            </div>
+
+            `;
+
+
+        });
+
+
+    } catch(err){
+
+        console.log(err);
+
+    }
+
+}
 let currentStatus = "ALL";
 async function loadMails() {
 
@@ -250,8 +315,8 @@ function exportMails() {
 
     window.location.href =
         status === "ALL"
-        ? "/api/mails/export"
-        : `/api/mails/export?status=${status}`;
+            ? "/api/mails/export"
+            : `/api/mails/export?status=${status}`;
 
 }
 
@@ -288,6 +353,7 @@ function refresh() {
     loadMails();
 
     loadChart();
+    loadProviders();
 
 }
 

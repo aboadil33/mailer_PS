@@ -119,7 +119,23 @@ router.get("/mails", (req, res) => {
     }
 
 });
+router.get("/providers",(req,res)=>{
 
+    try{
+
+        res.json(
+            repo.getProviders()
+        );
+
+    }catch(err){
+
+        res.status(500).json({
+            error:err.message
+        });
+
+    }
+
+});
 
 router.get("/mail/:queueId", (req, res) => {
 
