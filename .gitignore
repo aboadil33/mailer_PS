@@ -1,2 +1,3 @@
+src/tracker/tracker.db
 node_modules/
 .env
