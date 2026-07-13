@@ -9,7 +9,8 @@ module.exports = {
 
    from: {
       name: process.env.FROM_NAME,
-      email: process.env.FROM_EMAIL
+      email: process.env.FROM_EMAIL,
+      subject: process.env.SUBJECT
    },
 
    workers: Number(process.env.WORKERS),

@@ -5,7 +5,7 @@ const replace = require("../template/replace");
 const loadTemplate = require("../template/loader");
 
 const repo = require("../tracker/repository");
-
+const { randomCode } = require("../utils/random");
 
 const template = loadTemplate();
 
@@ -19,25 +19,29 @@ async function send(email){
     );
 
 
+    // console.log(config.from.email.replace("!!RAND!!", randomCode(24)))
+
+
     const info = await smtp.sendMail({
 
         from:
         `"${config.from.name}" <${config.from.email}>`,
+        from: `"${config.from.name}" <${config.from.email.replace("!!RAND!!", randomCode(49))}>`,
 
         to: email,
 
         subject:
-        "Important information about",
+        config.from.subject,
 
-        html,
+        html
 
-        headers:{
-            "List-Unsubscribe":
-            "<mailto:unsubscribe@boga.duud.ae>",
-
-            "List-Unsubscribe-Post":
-            "List-Unsubscribe=One-Click"
-        }
+//#        headers:{
+//#            "List-Unsubscribe":
+//#            "<mailto:unsubscribe@boga.duud.ae>",
+//#
+//#            "List-Unsubscribe-Post":
+//#            "List-Unsubscribe=One-Click"
+//#        }
 
     });
 
@@ -62,8 +66,7 @@ async function send(email){
 
             email: email,
 
-            subject:
-            "Important information about",
+            subject: config.from.subject,
 
             response:
             info.response
