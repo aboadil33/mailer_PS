@@ -8,8 +8,18 @@ let queue = fs.readFileSync(
     __dirname + "/data/emails.txt",
     "utf8"
 )
-    .split(/\r?\n/)
-    .filter(Boolean);
+.split(/\r?\n/)
+.filter(Boolean);
+
+
+const stats = {
+    total: queue.length,
+    sent: 0,
+    failed: 0
+};
+
+
+console.log(`TOTAL EMAILS: ${stats.total}`);
 
 
 let workers = [];
@@ -18,15 +28,18 @@ let workers = [];
 for (let i = 0; i < config.workers; i++) {
 
     workers.push(
-        worker(queue)
+        worker(queue, stats)
     );
 
 }
 
 
 Promise.all(workers)
-    .then(() => {
+.then(() => {
 
-        console.log("DONE");
+    console.log("========== DONE ==========");
+    console.log(`TOTAL : ${stats.total}`);
+    console.log(`SENT  : ${stats.sent}`);
+    console.log(`FAILED: ${stats.failed}`);
 
-    });
+});

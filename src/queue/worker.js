@@ -4,7 +4,7 @@ const send = require("../mail/sender");
 const logger = require("../utils/logger");
 
 
-async function worker(queue) {
+async function worker(queue, stats) {
 
 
     while (queue.length) {
@@ -19,26 +19,39 @@ async function worker(queue) {
 
             logger.sent(email);
 
-            console.log("SENT", email);
+
+            stats.sent++;
+
+
+            console.log(
+                `SENT ${email} | ${stats.sent}/${stats.total}`
+            );
 
 
         } catch (e) {
 
+
             logger.error(email + " " + e.message);
 
-            console.log("ERROR", email);
+
+            stats.failed++;
+
+
+            console.log(
+                `FAILED ${email} | Failed: ${stats.failed}`
+            );
 
         }
 
 
-        await new Promise(r => setTimeout(r, config.delay));
+        await new Promise(r => 
+            setTimeout(r, config.delay)
+        );
 
 
     }
 
 
 }
-
-
 
 module.exports = worker;

@@ -20,13 +20,15 @@ async function send(email){
 
 
     // console.log(config.from.email.replace("!!RAND!!", randomCode(24)))
+    // config.from.email = config.from.email.replace(    /!!RAND\[(\d+)\]!!/g,    (_, len) => randomCode(Number(len)));
 
 
     const info = await smtp.sendMail({
 
         from:
         `"${config.from.name}" <${config.from.email}>`,
-        from: `"${config.from.name}" <${config.from.email.replace("!!RAND!!", randomCode(49))}>`,
+        // from: `"${config.from.name}" <${config.from.email.replace("!!RAND!!", randomCode(49))}>`,
+        from: `"${config.from.name}" <${config.from.email = config.from.email.replace(    /!!RAND\[(\d+)\]!!/g,    (_, len) => randomCode(Number(len))).toLowerCase()}>`,
 
         to: email,
 
