@@ -1,31 +1,54 @@
-function randomCode(size = 10) {
+// ============================================
+// دوال عشوائية
+// ============================================
 
-    let chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-
-    let out = "";
-
-    for (let i = 0; i < size; i++) {
-        out += chars[Math.floor(Math.random() * chars.length)];
+function randomCode(length = 8) {
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let result = '';
+    for (let i = 0; i < length; i++) {
+        result += chars.charAt(Math.floor(Math.random() * chars.length));
     }
-
-    return out;
-
+    return result;
 }
 
-
-// module.exports = randomCode;
-function generateSession(){
-
-    const time = Date.now();
-
-    const random = randomCode(16);
-
-    return `${time}_${random}`;
-
+function generateSession() {
+    return randomCode(16);
 }
 
+function randomChoice(array) {
+    return array[Math.floor(Math.random() * array.length)];
+}
 
+// ============================================
+// ✅ معالج Spintax {خيار1|خيار2|خيار3}
+// ============================================
+function processSpintax(text) {
+    if (!text) return text;
+    let result = text;
+    result = result.replace(/\{([^}]+)\}/g, (match, options) => {
+        const choices = options.split('|');
+        return randomChoice(choices);
+    });
+    return result;
+}
+
+// ============================================
+// معالجة !!RAND[n]!! في الإيميل
+// ============================================
+function processRandTag(text) {
+    if (!text) return text;
+    return text.replace(/!!RAND\[(\d+)\]!!/g, (_, len) => {
+        return randomCode(Number(len));
+    });
+}
+
+// ============================================
+// ✅ التصدير الصحيح
+// ============================================
 module.exports = {
     randomCode,
-    generateSession
+    generateSession,
+    randomChoice,
+    processSpintax,      // ✅ لازم تكون مصدرة
+    processRandTag
 };
